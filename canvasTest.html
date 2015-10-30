@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,maxmum-scale=1,minmum-scale=1"/>
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;border: none;}
+			html,body{width: 100%;height: 100%;position: relative;background: #efefef;}
+		</style>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<img id="beauty" src="img/girl2.jpg" style="width: 100%;"/>
+		<script type="text/javascript">
+			$(function(){
+				$img = $("#beauty");
+				var newImage = new Image();
+				newImage.src = $img.attr("src");
+				newImage.onload = function(){
+					var width = $img.width(),
+						height = $img.height(),
+						pos = $img.offset(),
+						$canvas = $("<canvas/>"),
+						canvas = $canvas.get(0),
+						size = 40,
+						colParts = Math.floor( width / size ),
+						numParts = colParts * Math.floor( height / size ),
+						n = numParts,
+						ctx = canvas.getContext("2d");
+						
+					$img.after( $canvas );
+					canvas.id = this.id;
+					canvas.className = this.className;
+					canvas.width = width;
+					canvas.height = height;
+					canvas.style.backgroundColor='transparent';
+					ctx.fillStyle='rgba(255,0,0,0)';
+					ctx.drawImage( this, 0, 0 ,width,height);
+					$img.remove();
+					
+					ctx.globalCompositeOperation = "destination-out";
+					ctx.strokeStyle = 'rgba(255,0,0,255)';
+					ctx.lineWidth = size;
+					
+					ctx.beginPath();
+					ctx.moveTo(10,10)
+					ctx.lineTo(100,100);
+					ctx.stroke()
+					console.log(ctx);
+//					ctx.arc(100,100,10,0,Math.PI*2);
+//					ctx.fill();
+						
+				}
+			});
+		</script>
+		<script type="text/javascript">
+			$(function(){
+				var $canvas = $("<canvas/>"),
+					canvas = $canvas.get(0),
+					ctx = canvas.getContext("2d");
+					
+					ctx.globalCompositeOperation = "destination-out";
+//					alert(ctx.globalCompositeOperation);
+			})
+		</script>
+	</body>
+</html>

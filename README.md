@@ -66,6 +66,7 @@ lighter	显示源图像 + 目标图像。<br/>
 copy	显示源图像。忽略目标图像。<br/>
 source-over	使用异或操作对源图像与目标图像进行组合。<br/>
 具体效果如下：http://www.w3school.com.cn/tiy/t.asp?f=html5_canvas_globalcompop_all<br/>
+<img src="http://dl.iteye.com/upload/picture/pic/71054/9f086ab0-932c-3195-884b-cfc8aa3d8ce4.jpg">
 
 其中destination-out就是今天实现刮卡效果的主要功臣，结合lineWidth设置绘制透明线的宽度，就可以实现我们手指宽度刮卡的效果了。<br/>
 
